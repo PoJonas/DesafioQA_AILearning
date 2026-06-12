@@ -43,12 +43,12 @@ pip install -r requirements.txt
 
 **3. Execute os testes**
 ```bash
-pytest
+python -m pytest
 ```
 
 Para ver mais detalhes na saída:
 ```bash
-pytest -v
+python -m pytest -v
 ```
 
 ---
