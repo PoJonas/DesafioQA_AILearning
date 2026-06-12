@@ -74,17 +74,45 @@ https://compassuol.serverest.dev
 
 ## Descrição dos testes
 
-Todos os testes estão no arquivo `tests/test_usuarios.py` e cobrem o endpoint `/usuarios` da API ServeRest.
+Os testes estão organizados por endpoint em arquivos separados dentro de `tests/`.
+
+**`test_usuarios.py`** — endpoint `/usuarios`
 
 | Teste | Método | Cenário |
 |---|---|---|
-| `test_listar_usuarios` | GET | Verifica que a listagem retorna status 200 e o campo `usuarios` |
+| `test_listar_usuarios` | GET | Listagem retorna status 200 e o campo `usuarios` |
 | `test_cadastrar_usuario_valido` | POST | Cadastro com dados válidos retorna status 201 e um `_id` |
-| `test_cadastrar_email_duplicado` | POST | Tentativa de cadastro com e-mail já existente retorna status 400 |
+| `test_cadastrar_email_duplicado` | POST | E-mail já existente retorna status 400 |
 | `test_cadastrar_sem_email` | POST | Cadastro sem o campo `email` retorna status 400 |
 | `test_cadastrar_sem_nome` | POST | Cadastro sem o campo `nome` retorna status 400 |
 | `test_buscar_usuario_por_id` | GET | Busca por ID retorna o usuário correto com status 200 |
-| `test_buscar_usuario_inexistente` | GET | Busca por ID inválido retorna status 400 |
-| `test_atualizar_usuario` | PUT | Atualização de dados de um usuário existente retorna status 200 |
+| `test_buscar_usuario_inexistente` | GET | ID inválido retorna status 400 |
+| `test_atualizar_usuario` | PUT | Atualização de usuário existente retorna status 200 |
 | `test_excluir_usuario` | DELETE | Exclusão de usuário existente retorna status 200 |
 | `test_excluir_usuario_inexistente` | DELETE | Exclusão de ID inexistente retorna status 200 |
+
+**`test_login.py`** — endpoint `/login`
+
+| Teste | Método | Cenário |
+|---|---|---|
+| `test_login_valido` | POST | Credenciais válidas retornam status 200 e o token de autorização |
+| `test_login_email_invalido` | POST | E-mail inexistente retorna status 401 |
+| `test_login_senha_invalida` | POST | Senha incorreta retorna status 401 |
+
+**`test_produtos.py`** — endpoint `/produtos`
+
+| Teste | Método | Cenário |
+|---|---|---|
+| `test_listar_produtos` | GET | Listagem retorna status 200 e o campo `produtos` |
+| `test_cadastrar_produto_valido` | POST | Cadastro autenticado retorna status 201 e um `_id` |
+| `test_cadastrar_produto_sem_autorizacao` | POST | Cadastro sem token retorna status 401 |
+| `test_buscar_produto_por_id` | GET | Busca por ID retorna o produto correto com status 200 |
+| `test_excluir_produto` | DELETE | Exclusão autenticada retorna status 200 |
+
+**`test_carrinhos.py`** — endpoint `/carrinhos`
+
+| Teste | Método | Cenário |
+|---|---|---|
+| `test_listar_carrinhos` | GET | Listagem retorna status 200 e o campo `carrinhos` |
+| `test_cadastrar_carrinho` | POST | Criação de carrinho autenticada retorna status 201 e um `_id` |
+| `test_cancelar_compra` | DELETE | Cancelamento de compra retorna status 200 |
