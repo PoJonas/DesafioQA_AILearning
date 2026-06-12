@@ -1,4 +1,4 @@
-# DesafioQA — AI Learning 🤖🧪
+# DesafioQA — AI Learning
 
 Projeto de automação de testes de API desenvolvido como desafio de QA, utilizando Python e Pytest contra a API [ServeRest](https://serverest.dev) hospedada pela CompassUOL.
 
