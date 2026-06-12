@@ -11,12 +11,3 @@ def gerar_usuario():
         "password": "teste123",
         "administrador": "true"
     }
-
-
-def gerar_produto():
-    return {
-        "nome": fake.word().capitalize() + " " + fake.word().capitalize(),
-        "preco": random.randint(10, 500),
-        "descricao": fake.sentence(),
-        "quantidade": random.randint(1, 100)
-    }

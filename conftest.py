@@ -1,6 +1,6 @@
 import pytest
 import requests
-from utils.data_generator import gerar_usuario, gerar_produto
+from utils.data_generator import gerar_usuario
 
 BASE_URL = "https://compassuol.serverest.dev"
 
@@ -31,16 +31,3 @@ def token(base_url, usuario_cadastrado):
         "password": usuario_cadastrado["password"]
     })
     return resposta.json().get("authorization")
-
-
-@pytest.fixture
-def produto_cadastrado(base_url, token):
-    """Cadastra um produto e retorna seus dados incluindo o _id."""
-    payload = gerar_produto()
-    resposta = requests.post(
-        f"{base_url}/produtos",
-        json=payload,
-        headers={"Authorization": token}
-    )
-    _id = resposta.json().get("_id")
-    return {**payload, "_id": _id}

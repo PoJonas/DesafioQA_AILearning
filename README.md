@@ -98,21 +98,3 @@ Os testes estão organizados por endpoint em arquivos separados dentro de `tests
 | `test_login_valido` | POST | Credenciais válidas retornam status 200 e o token de autorização |
 | `test_login_email_invalido` | POST | E-mail inexistente retorna status 401 |
 | `test_login_senha_invalida` | POST | Senha incorreta retorna status 401 |
-
-**`test_produtos.py`** — endpoint `/produtos`
-
-| Teste | Método | Cenário |
-|---|---|---|
-| `test_listar_produtos` | GET | Listagem retorna status 200 e o campo `produtos` |
-| `test_cadastrar_produto_valido` | POST | Cadastro autenticado retorna status 201 e um `_id` |
-| `test_cadastrar_produto_sem_autorizacao` | POST | Cadastro sem token retorna status 401 |
-| `test_buscar_produto_por_id` | GET | Busca por ID retorna o produto correto com status 200 |
-| `test_excluir_produto` | DELETE | Exclusão autenticada retorna status 200 |
-
-**`test_carrinhos.py`** — endpoint `/carrinhos`
-
-| Teste | Método | Cenário |
-|---|---|---|
-| `test_listar_carrinhos` | GET | Listagem retorna status 200 e o campo `carrinhos` |
-| `test_cadastrar_carrinho` | POST | Criação de carrinho autenticada retorna status 201 e um `_id` |
-| `test_cancelar_compra` | DELETE | Cancelamento de compra retorna status 200 |
