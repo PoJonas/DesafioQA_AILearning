@@ -1,6 +1,8 @@
 import requests
 from utils.data_generator import gerar_produto
 
+# Para verificar a documentação especifica de cada caso de teste, procure pelo arquivo abaixo:
+# Documentação em: Detalhamento/Testes_Produtos.md
 
 def test_listar_produtos(base_url):
     resposta = requests.get(f"{base_url}/produtos")

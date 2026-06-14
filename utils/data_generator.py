@@ -11,3 +11,11 @@ def gerar_usuario():
         "password": "teste123",
         "administrador": "true"
     }
+
+def gerar_produto():
+    return {      
+        "nome": fake.random_company_product(),
+        "preco": random.randint(),
+        "descricao": fake.random_company_product(),
+        "quantidade": random.randint()
+    }
