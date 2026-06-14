@@ -5,16 +5,20 @@ from utils.data_generator import gerar_usuario
 BASE_URL = "https://compassuol.serverest.dev"
 
 
+# Fixtures principais utilizadas
+
+# Retorna a URL base, definida previamente na variavel 'BASE_URL'
 @pytest.fixture
 def base_url():
     return BASE_URL
 
-
+# Retorna a execução da função 'gerar_usuario()', armazenada no arquivo 'data_generator.py' dentro da pasta utils
 @pytest.fixture
 def usuario():
     return gerar_usuario()
 
 
+# Recebe como parametro as duas Fixtures anteriores e usa seus dados para cadastrar um novo usuário na API
 @pytest.fixture
 def usuario_cadastrado(base_url, usuario):
     """Cria um usuário na API e retorna seus dados incluindo o _id."""
