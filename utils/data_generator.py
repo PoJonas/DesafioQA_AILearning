@@ -12,10 +12,11 @@ def gerar_usuario():
         "administrador": "true"
     }
 
+# Retorna um Dict com os dados de um produto simulado
 def gerar_produto():
-    return {      
-        "nome": fake.random_company_product(),
-        "preco": random.randint(),
-        "descricao": fake.random_company_product(),
-        "quantidade": random.randint()
+    return {
+        "nome": fake.unique.bothify(text="Produto ???-###"), # Gera valores seguindo o padrão 'Produto abc-123'
+        "preco": random.randint(1, 1000),
+        "descricao": fake.sentence(nb_words=6), # Gera uma frase com 6 palavras
+        "quantidade": random.randint(1, 100)
     }

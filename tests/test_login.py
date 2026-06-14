@@ -1,6 +1,6 @@
 import requests
 
-# Para verificar a documentação especifica de cada caso de teste, procure pelo arquivo abaixo:
+# Para verificar a documentação especifica de cada caso de teste, procure pelo arquivo abaixo
 # Documentação em: Detalhamento/Testes_Login.md
 
 def test_login_valido(base_url, usuario_cadastrado):

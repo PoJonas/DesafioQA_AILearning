@@ -1,9 +1,8 @@
 import requests
 from utils.data_generator import gerar_usuario
 
-# Para verificar a documentação especifica de cada caso de teste, procure pelo arquivo abaixo:
+# Para verificar a documentação especifica de cada caso de teste, procure pelo arquivo abaixo
 # Documentação em: Detalhamento/Testes_Usuarios.md
-
 
 def test_listar_usuarios(base_url):
     resposta = requests.get(f"{base_url}/usuarios")
