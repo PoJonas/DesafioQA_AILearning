@@ -67,8 +67,8 @@ https://compassuol.serverest.dev
 
 ## Observações
 
-- Os dados de usuário são gerados dinamicamente via `faker` a cada execução.
-- As fixtures globais (`usuario`, `base_url`) estão definidas no `conftest.py` e ficam disponíveis para todos os testes automaticamente.
+- Os dados de usuário são gerados dinamicamente via `faker` a cada execução e estão definidas em `utils/data_generator`.
+- As fixtures globais estão definidas no `conftest.py` e ficam disponíveis para todos os testes automaticamente.
 
 ---
 
@@ -77,24 +77,8 @@ https://compassuol.serverest.dev
 Os testes estão organizados por endpoint em arquivos separados dentro de `tests/`.
 
 **`test_usuarios.py`** — endpoint `/usuarios`
-
-| Teste | Método | Cenário |
-|---|---|---|
-| `test_listar_usuarios` | GET | Listagem retorna status 200 e o campo `usuarios` |
-| `test_cadastrar_usuario_valido` | POST | Cadastro com dados válidos retorna status 201 e um `_id` |
-| `test_cadastrar_email_duplicado` | POST | E-mail já existente retorna status 400 |
-| `test_cadastrar_sem_email` | POST | Cadastro sem o campo `email` retorna status 400 |
-| `test_cadastrar_sem_nome` | POST | Cadastro sem o campo `nome` retorna status 400 |
-| `test_buscar_usuario_por_id` | GET | Busca por ID retorna o usuário correto com status 200 |
-| `test_buscar_usuario_inexistente` | GET | ID inválido retorna status 400 |
-| `test_atualizar_usuario` | PUT | Atualização de usuário existente retorna status 200 |
-| `test_excluir_usuario` | DELETE | Exclusão de usuário existente retorna status 200 |
-| `test_excluir_usuario_inexistente` | DELETE | Exclusão de ID inexistente retorna status 200 |
-
 **`test_login.py`** — endpoint `/login`
+**`test_produtos.py`** — endpoint `/produtos`
+**`test_carrinhos.py`** — endpoint `/carrinhos`
 
-| Teste | Método | Cenário |
-|---|---|---|
-| `test_login_valido` | POST | Credenciais válidas retornam status 200 e o token de autorização |
-| `test_login_email_invalido` | POST | E-mail inexistente retorna status 401 |
-| `test_login_senha_invalida` | POST | Senha incorreta retorna status 401 |
+Para verificar detalhamente cada um dos casos de testes acesse suas documentações individuais em `Detalhamento/`.
