@@ -16,12 +16,18 @@ class TestProdutos:
 
     def test_cadastrar_produto_valido(self, base_url, token):
         payload = gerar_produto()
-        resposta = requests.post(f"{base_url}/produtos",json=payload, headers={"Authorization": token})
+        resposta = requests.post(f"{base_url}/produtos", json=payload, headers={"Authorization": token})
         body = resposta.json()
 
         assert resposta.status_code == 201
         assert "_id" in body
 
+    def test_cadastrar_produto_preco_invalido(self, base_url, token):
+        payload = gerar_produto()
+        payload["preco"] = -1
+        resposta = requests.post(f"{base_url}/produtos", json=payload, headers={"Authorization": token})
+
+        assert resposta.status_code == 400
 
     def test_cadastrar_produto_sem_token(self, base_url):
         payload = gerar_produto()

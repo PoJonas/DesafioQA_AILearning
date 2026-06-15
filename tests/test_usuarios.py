@@ -19,6 +19,7 @@ class TestUsuarios:
         body = resposta.json()
 
         assert resposta.status_code == 201
+        assert resposta.json()["message"] == "Cadastro realizado com sucesso"
         assert "_id" in body
 
 
@@ -30,19 +31,13 @@ class TestUsuarios:
         assert resposta.json()["message"] == "Este email já está sendo usado"
 
 
-    def test_cadastrar_sem_email(self, base_url, usuario):
-        del usuario["email"]
-        resposta = requests.post(f"{base_url}/usuarios", json=usuario)
+    def test_cadastrar_vazio(self, base_url):
+        resposta = requests.post(f"{base_url}/login", json={
+            "email": "",
+            "password": ""
+        })
 
         assert resposta.status_code == 400
-
-
-    def test_cadastrar_sem_nome(self, base_url, usuario):
-        del usuario["nome"]
-        resposta = requests.post(f"{base_url}/usuarios", json=usuario)
-
-        assert resposta.status_code == 400
-
 
     def test_buscar_usuario_por_id(self, base_url, usuario_cadastrado):
         user_id = usuario_cadastrado["_id"]

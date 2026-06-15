@@ -17,13 +17,14 @@ class TestLogin:
         assert "authorization" in body
 
 
-    def test_login_email_invalido(self, base_url):
+    def test_login_email_invalido(self, base_url, usuario_cadastrado):
         resposta = requests.post(f"{base_url}/login", json={
             "email": "naoexiste@email.com",
-            "password": "teste123"
+            "password": usuario_cadastrado["password"]
         })
 
         assert resposta.status_code == 401
+        assert resposta.json()["message"] == "Email e/ou senha inválidos"
 
 
     def test_login_senha_invalida(self, base_url, usuario_cadastrado):
@@ -33,3 +34,12 @@ class TestLogin:
         })
 
         assert resposta.status_code == 401
+        assert resposta.json()["message"] == "Email e/ou senha inválidos"
+
+    def test_login_campos_vazios(self, base_url):
+        resposta = requests.post(f"{base_url}/login", json={
+            "email": "",
+            "password": ""
+        })
+
+        assert resposta.status_code == 400

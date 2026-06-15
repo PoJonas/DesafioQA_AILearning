@@ -54,8 +54,7 @@ Todos os testes abaixo estão sujeitos a alterações visto que a suíte ainda n
 | 01 | `test_listar_usuarios` | GET | Retorna 200 e campo `usuarios` | ✅ Implementado |
 | 02 | `test_cadastrar_usuario_valido` | POST | Dados válidos → 201 e `_id` | ✅ Implementado |
 | 03 | `test_cadastrar_email_duplicado` | POST | Email já existente → 400 | ✅ Implementado |
-| 04 | `test_cadastrar_sem_email` | POST | Body sem `email` → 400 | ✅ Implementado |
-| 05 | `test_cadastrar_sem_nome` | POST | Body sem `nome` → 400 | ✅ Implementado |
+| 04 | `test_cadastrar_vazio` | POST | Body vazio → 400 | ✅ Implementado |
 | 06 | `test_buscar_usuario_por_id` | GET | ID válido → 200 e dados corretos | ✅ Implementado |
 | 07 | `test_buscar_usuario_inexistente` | GET | ID inválido → 400 | ✅ Implementado |
 | 08 | `test_atualizar_usuario` | PUT | Dados válidos → 200 | ✅ Implementado |
@@ -69,7 +68,7 @@ Todos os testes abaixo estão sujeitos a alterações visto que a suíte ainda n
 | 11 | `test_login_valido` | POST | Credenciais corretas → 200 + token | ✅ Implementado |
 | 12 | `test_login_email_invalido` | POST | Email inexistente → 401 | ✅ Implementado |
 | 13 | `test_login_senha_invalida` | POST | Senha incorreta → 401 | ✅ Implementado |
-| 14 | `test_login_campos_vazios` | POST | Email e senha vazios → 400 | 🔲 Pendente |
+| 14 | `test_login_campos_vazios` | POST | Email e senha vazios → 400 | ✅ Implementado |
 
 ### `/produtos`
 

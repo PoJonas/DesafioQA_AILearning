@@ -7,10 +7,10 @@ import requests, pytest
 @pytest.mark.carrinhos
 class TestCarrinhos:
     def test_listar_carrinhos(self, base_url):
-        response = requests.get(f"{base_url}/carrinhos")
+        resposta = requests.get(f"{base_url}/carrinhos")
 
-        assert response.status_code == 200
-        assert "carrinhos" in response.json()
+        assert resposta.status_code == 200
+        assert "carrinhos" in resposta.json()
 
 
     def test_criar_carrinho_valido(self, base_url, token, produto_cadastrado):
@@ -22,10 +22,10 @@ class TestCarrinhos:
                 }
             ]
         }
-        response = requests.post(f"{base_url}/carrinhos",json=payload, headers={"Authorization": token})
+        resposta = requests.post(f"{base_url}/carrinhos",json=payload, headers={"Authorization": token})
 
-        assert response.status_code == 201
-        assert "_id" in response.json()
+        assert resposta.status_code == 201
+        assert "_id" in resposta.json()
 
 
     def test_cancelar_compra(self, base_url, token, produto_cadastrado):
@@ -39,6 +39,6 @@ class TestCarrinhos:
         }
         requests.post(f"{base_url}/carrinhos", json=payload, headers={"Authorization": token})
 
-        response = requests.delete(f"{base_url}/carrinhos/cancelar-compra", headers={"Authorization": token})
+        resposta = requests.delete(f"{base_url}/carrinhos/cancelar-compra", headers={"Authorization": token})
 
-        assert response.status_code == 200
+        assert resposta.status_code == 200
