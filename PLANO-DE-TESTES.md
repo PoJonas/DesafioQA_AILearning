@@ -49,22 +49,25 @@ Todos os testes abaixo estão sujeitos a alterações visto que a suíte ainda n
 
 ### `/usuarios`
 
-| # | Teste | Método | Cenário | Status |
-|---|---|---|---|---|
-| 01 | `test_listar_usuarios` | GET | Retorna 200 e campo `usuarios` | ✅ Implementado |
-| 02 | `test_cadastrar_usuario_valido` | POST | Dados válidos → 201 e `_id` | ✅ Implementado |
-| 03 | `test_cadastrar_email_duplicado` | POST | Email já existente → 400 | ✅ Implementado |
-| 04 | `test_cadastrar_vazio` | POST | Body vazio → 400 | ✅ Implementado |
-| 06 | `test_buscar_usuario_por_id` | GET | ID válido → 200 e dados corretos | ✅ Implementado |
-| 07 | `test_buscar_usuario_inexistente` | GET | ID inválido → 400 | ✅ Implementado |
-| 08 | `test_atualizar_usuario` | PUT | Dados válidos → 200 | ✅ Implementado |
-| 09 | `test_excluir_usuario` | DELETE | ID válido → 200 | ✅ Implementado |
-| 10 | `test_excluir_usuario_inexistente` | DELETE | ID inexistente → 200 | ✅ Implementado |
+| # | Teste | Método | Cenário | Status | Anotações |
+|---|---|---|---|---|---|
+| 01 | `test_listar_usuarios` | GET | Retorna 200 e campo `usuarios` | ✅ Implementado | Passou, Falha grave de segurança o GET retorna todos os dados do usuario |
+| 02 | `test_cadastrar_usuario_valido` | POST | Dados válidos → 201 e `_id` | ✅ Implementado | Passou |
+| 03 | `test_cadastrar_email_duplicado` | POST | Email já existente → 400 | ✅ Implementado | Passou |
+| 04 | `test_cadastrar_validacao_emoji` | POST | Não aceita → 400 | ✅ Implementado | BUG → O sistema não válida e aceita a entrada de emojis no corpo e domínio do email |
+| 05 | `test_cadastrar_campos_vazios` | POST | `Body` vazio → 400 | ✅ Implementado | Passou |
+| 06 | `test_buscar_usuario_por_id` | GET | ID válido → 200 e dados corretos | ✅ Implementado | Passou, Falha grave de segurança o GET retorna todos os dados do usuario |
+| 07 | `test_buscar_usuario_inexistente` | GET | ID inválido → 400 | ✅ Implementado | Passou |
+| 08 | `test_atualizar_usuario` | PUT | Dados válidos → 200 | ✅ Implementado | Passou |
+| 09 | `test_atualizar_usuario_inexistente` | PUT | Dados inexistentes → 201 | ✅ Implementado | Passou |
+| 10 | `test_excluir_usuario` | DELETE | ID válido → 200 | ✅ Implementado | Passou |
+| 11 | `test_excluir_usuario_inexistente` | DELETE | ID inexistente → 200 com `message` diferente | ✅ Implementado | Passou |
+| 12 | `test_excluir_usuario_com_carrinho` | DELETE | Usuário com carrinho ativo → 400 | ✅ Implementado | Passou |
 
 ### `/login`
 
-| # | Teste | Método | Cenário | Status |
-|---|---|---|---|---|
+| # | Teste | Método | Cenário | Status | Anotações |
+|---|---|---|---|---|---|
 | 11 | `test_login_valido` | POST | Credenciais corretas → 200 + token | ✅ Implementado |
 | 12 | `test_login_email_invalido` | POST | Email inexistente → 401 | ✅ Implementado |
 | 13 | `test_login_senha_invalida` | POST | Senha incorreta → 401 | ✅ Implementado |
@@ -72,8 +75,8 @@ Todos os testes abaixo estão sujeitos a alterações visto que a suíte ainda n
 
 ### `/produtos`
 
-| # | Teste | Método | Cenário | Status |
-|---|---|---|---|---|
+| # | Teste | Método | Cenário | Status | Anotações |
+|---|---|---|---|---|---|
 | 15 | `test_listar_produtos` | GET | Retorna 200 e campo `produtos` | ✅ Implementado |
 | 16 | `test_cadastrar_produto_valido` | POST | Token de admin válido → 201 | ✅ Implementado |
 | 17 | `test_cadastrar_produto_sem_token` | POST | Sem token → 401 | 🔲 Pendente |
@@ -89,8 +92,8 @@ Todos os testes abaixo estão sujeitos a alterações visto que a suíte ainda n
 
 ### `/carrinhos`
 
-| # | Teste | Método | Cenário | Status |
-|---|---|---|---|---|
+| # | Teste | Método | Cenário | Status | Anotações |
+|---|---|---|---|---|---|
 | 27 | `test_listar_carrinhos` | GET | Retorna 200 e campo `carrinhos` | ✅ Implementado |
 | 28 | `test_criar_carrinho_valido` | POST | Token válido + produto existente → 201 | ✅ Implementado |
 | 29 | `test_criar_carrinho_sem_token` | POST | Sem token → 401 | 🔲 Pendente |
