@@ -4,12 +4,12 @@ import random
 fake = Faker("pt_BR") # Define a linguagem utilizada pelos dados gerados
 
 # Retorna um Dict contendo os dados necessários para o cadastro de um novo usuário seguindo o padrão de schema da ServerRest
-def gerar_usuario(): 
+def gerar_usuario(administrador: bool = True):
     return {
         "nome": fake.name(),
         "email": fake.email(),
         "password": "teste123",
-        "administrador": "true"
+        "administrador": str(administrador).lower()
     }
 
 # Retorna um Dict com os dados de um produto simulado

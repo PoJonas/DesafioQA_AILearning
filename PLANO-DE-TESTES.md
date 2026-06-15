@@ -83,40 +83,41 @@ Todos os testes abaixo estão sujeitos a alterações visto que a suíte ainda n
 | 20 | `test_cadastrar_produto_token_nao_admin` | POST | Token de usuário comum → 403 | 🔲 Pendente |
 | 21 | `test_cadastrar_produto_nome_duplicado` | POST | Nome já existente → 400 | 🔲 Pendente |
 | 22 | `test_cadastrar_produto_campo_ausente` | POST | Body sem `preco` → 400 | 🔲 Pendente |
-| 23 | `test_buscar_produto_por_id` | GET | ID válido → 200 e dados corretos | ✅ Implementado |
-| 24 | `test_buscar_produto_inexistente` | GET | ID inválido → 400 | 🔲 Pendente |
-| 25 | `test_atualizar_produto` | PUT | Token de admin + dados válidos → 200 | 🔲 Pendente |
-| 26 | `test_atualizar_produto_sem_token` | PUT | Sem token → 401 | 🔲 Pendente |
-| 27 | `test_atualizar_produto_token_nao_admin` | PUT | Token de usuário comum → 403 | 🔲 Pendente |
-| 28 | `test_atualizar_produto_inexistente` | PUT | Produto não existe então cria-se um novo → 201 | 🔲 Pendente |
-| 29 | `test_atualizar_produto_nome_duplicado` | PUT | Atualizar o nome para um já existente → 400 | 🔲 Pendente |
-| 30 | `test_excluir_produto` | DELETE | Token de admin → 200 | ✅ Implementado |
-| 31 | `test_excluir_produto_sem_token` | DELETE | Sem token → 401 | 🔲 Pendente |
-| 32 | `test_excluir_produto_token_nao_admin` | DELETE | Token de usuário comum → 403 | 🔲 Pendente |
-| 33 | `test_excluir_produto_no_carrinho` | DELETE | Token de admin → 200 | ✅ Implementado |
+| 23 | `test_cadastrar_produto_preco_invalido` | POST | Preço negativo → 400 | ✅ Implementado |
+| 24 | `test_buscar_produto_por_id` | GET | ID válido → 200 e dados corretos | ✅ Implementado |
+| 25 | `test_buscar_produto_inexistente` | GET | ID inválido → 400 | 🔲 Pendente |
+| 26 | `test_atualizar_produto` | PUT | Token de admin + dados válidos → 200 | 🔲 Pendente |
+| 27 | `test_atualizar_produto_sem_token` | PUT | Sem token → 401 | 🔲 Pendente |
+| 28 | `test_atualizar_produto_token_nao_admin` | PUT | Token de usuário comum → 403 | 🔲 Pendente |
+| 29 | `test_atualizar_produto_inexistente` | PUT | Produto não existe então cria-se um novo → 201 | 🔲 Pendente |
+| 30 | `test_atualizar_produto_nome_duplicado` | PUT | Atualizar o nome para um já existente → 400 | 🔲 Pendente |
+| 31 | `test_excluir_produto` | DELETE | Token de admin → 200 | ✅ Implementado |
+| 32 | `test_excluir_produto_sem_token` | DELETE | Sem token → 401 | 🔲 Pendente |
+| 33 | `test_excluir_produto_token_nao_admin` | DELETE | Token de usuário comum → 403 | 🔲 Pendente |
+| 34 | `test_excluir_produto_no_carrinho` | DELETE | Token de admin → 200 | ✅ Implementado |
 
 
 ### `/carrinhos`
 
 | # | Teste | Método | Cenário | Status |
 |---|---|---|---|---|---|
-| 34 | `test_listar_carrinhos` | GET | Retorna 200 e campo `carrinhos` | ✅ Implementado |
-| 35 | `test_listar_carrinhos_com_parametros_errados` | GET | Parametros negativos ou inexistentes → 400  | ✅ Implementado |
-| 36 | `test_criar_carrinho_valido` | POST | Token válido + produto existente → 201 | ✅ Implementado |
-| 37 | `test_criar_carrinho_sem_token` | POST | Sem token → 401 | 🔲 Pendente |
-| 38 | `test_criar_carrinho_token_nao_admin` | POST | Token comum → 403 | 🔲 Pendente |
-| 39 | `test_criar_segundo_carrinho` | POST | Usuário já tem carrinho → 400 | 🔲 Pendente |
-| 40 | `test_criar_carrinho_com_produto_duplicado` | POST | Carrinho possui produto duplicado → 400 | 🔲 Pendente |
-| 41 | `test_criar_carrinho_produto_inexistente` | POST | ID de produto inválido → 400 | 🔲 Pendente |
-| 42 | `test_criar_carrinho_produto_qtd_invalida` | POST | Produto com quantidade inválida → 400 | 🔲 Pendente |
-| 43 | `test_buscar_carrinho_por_id` | GET | Procurar um carrinho com ID válido → 200 | 🔲 Pendente |
-| 44 | `test_buscar_carrinho_id_inexistente` | GET | Procurar um carrinho com ID inexistente → 400 | 🔲 Pendente |
-| 45 | `test_fechar_carrinho` | DELETE | `/concluir-compra` correto e com token admin → 200 | 🔲 Pendente |
-| 46 | `test_fechar_carrinho_token_nao_admin` | DELETE | `/concluir-compra` correto mas com token comum → 403 | 🔲 Pendente |
-| 47 | `test_fechar_carrinho_usuario_sem_carrinho` | DELETE | Concluir a compra sem carrinho ativo → 200 e message de erro | 🔲 Pendente |
-| 48 | `test_cancelar_compra` | DELETE | `/cancelar-compra` correto e com token admin → 200 | ✅ Implementado |
-| 49 | `test_cancelar_compra_token_nao_admin` | DELETE | `/cancelar-compra` correto mas com token comum → 400 | 🔲 Pendente |
-| 50 | `test_cancelar_compra_usuario_sem_carrinho` | DELETE | Cancelar a compra sem carrinho ativo → 200 e message de erro | 🔲 Pendente |
+| 35 | `test_listar_carrinhos` | GET | Retorna 200 e campo `carrinhos` | ✅ Implementado |
+| 36 | `test_listar_carrinhos_com_parametros_errados` | GET | Parametros negativos ou inexistentes → 400  | ✅ Implementado |
+| 37 | `test_criar_carrinho_valido` | POST | Token válido + produto existente → 201 | ✅ Implementado |
+| 38 | `test_criar_carrinho_sem_token` | POST | Sem token → 401 | 🔲 Pendente |
+| 39 | `test_criar_carrinho_token_nao_admin` | POST | Token comum → 403 | 🔲 Pendente |
+| 40 | `test_criar_segundo_carrinho` | POST | Usuário já tem carrinho → 400 | 🔲 Pendente |
+| 41 | `test_criar_carrinho_com_produto_duplicado` | POST | Carrinho possui produto duplicado → 400 | 🔲 Pendente |
+| 42 | `test_criar_carrinho_produto_inexistente` | POST | ID de produto inválido → 400 | 🔲 Pendente |
+| 43 | `test_criar_carrinho_produto_qtd_invalida` | POST | Produto com quantidade inválida → 400 | 🔲 Pendente |
+| 44 | `test_buscar_carrinho_por_id` | GET | Procurar um carrinho com ID válido → 200 | 🔲 Pendente |
+| 45 | `test_buscar_carrinho_id_inexistente` | GET | Procurar um carrinho com ID inexistente → 400 | 🔲 Pendente |
+| 46 | `test_fechar_carrinho` | DELETE | `/concluir-compra` correto e com token admin → 200 | 🔲 Pendente |
+| 47 | `test_fechar_carrinho_token_nao_admin` | DELETE | `/concluir-compra` correto mas com token comum → 200 | 🔲 Pendente |
+| 48 | `test_fechar_carrinho_usuario_sem_carrinho` | DELETE | Concluir a compra sem carrinho ativo → 200 e message de erro | 🔲 Pendente |
+| 49 | `test_cancelar_compra` | DELETE | `/cancelar-compra` correto e com token admin → 200 | ✅ Implementado |
+| 50 | `test_cancelar_compra_token_nao_admin` | DELETE | `/cancelar-compra` correto mas com token comum → 200 | 🔲 Pendente |
+| 51 | `test_cancelar_compra_usuario_sem_carrinho` | DELETE | Cancelar a compra sem carrinho ativo → 200 e message de erro | 🔲 Pendente |
 
 ---
 
