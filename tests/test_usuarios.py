@@ -1,5 +1,7 @@
 import requests, pytest, random
 from utils.data_generator import gerar_usuario
+from jsonschema import validate
+from utils.schemas import SCHEMA_USUARIO, SCHEMA_LISTAR_USUARIOS
 
 # Para verificar a documentação especifica de cada caso de teste, procure pelo arquivo abaixo
 # Documentação em: Detalhamento/Testes_Usuarios.md
@@ -12,7 +14,8 @@ class TestUsuarios:
         resposta = requests.get(f"{base_url}/usuarios")
 
         assert resposta.status_code == 200
-        assert "usuarios" in resposta.json()
+        validate(instance=resposta.json(), schema=SCHEMA_LISTAR_USUARIOS)
+
 
 
     def test_cadastrar_usuario_valido(self, base_url, usuario):
@@ -53,7 +56,7 @@ class TestUsuarios:
         resposta = requests.get(f"{base_url}/usuarios/{user_id}")
 
         assert resposta.status_code == 200
-        assert resposta.json()["_id"] == user_id
+        validate(instance=resposta.json(), schema=SCHEMA_USUARIO)
 
 
     def test_buscar_usuario_inexistente(self, base_url):

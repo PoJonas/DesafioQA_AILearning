@@ -1,4 +1,6 @@
 import requests, pytest
+from jsonschema import validate
+from utils.schemas import SCHEMA_LOGIN
 
 # Para verificar a documentação especifica de cada caso de teste, procure pelo arquivo abaixo
 # Documentação em: Detalhamento/Testes_Login.md
@@ -14,7 +16,7 @@ class TestLogin:
         body = resposta.json()
 
         assert resposta.status_code == 200
-        assert "authorization" in body
+        validate(instance=resposta.json(), schema=SCHEMA_LOGIN)
 
 
     def test_login_email_invalido(self, base_url, usuario_cadastrado):

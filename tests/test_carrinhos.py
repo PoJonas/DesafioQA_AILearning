@@ -1,5 +1,6 @@
 import requests, pytest
-from utils.data_generator import gerar_usuario, gerar_produto
+from jsonschema import validate
+from utils.schemas import SCHEMA_LISTAR_CARRINHOS, SCHEMA_CARRINHO
 
 # Para verificar a documentação especifica de cada caso de teste, procure pelo arquivo abaixo
 # Documentação em: Detalhamento/Testes_Carrinho.md
@@ -11,7 +12,7 @@ class TestCarrinhos:
         resposta = requests.get(f"{base_url}/carrinhos")
 
         assert resposta.status_code == 200
-        assert "carrinhos" in resposta.json()
+        validate(instance=resposta.json(), schema=SCHEMA_LISTAR_CARRINHOS)
 
 
     def test_listar_carrinhos_com_parametros_errados(self, base_url):
@@ -20,8 +21,11 @@ class TestCarrinhos:
         assert resposta.status_code == 400
 
 
-    def test_criar_carrinho_valido(self, carrinho_cadastrado):
-        assert carrinho_cadastrado["_id"] is not None
+    def test_criar_carrinho_valido(self, base_url, carrinho_cadastrado):
+        resposta = requests.get(f"{base_url}/carrinhos/{carrinho_cadastrado['_id']}")
+
+        assert resposta.status_code == 200
+        validate(instance=resposta.json(), schema=SCHEMA_CARRINHO)
 
     def test_criar_carrinho_sem_token(self, base_url, produto_cadastrado):
         payload = {
@@ -116,7 +120,7 @@ class TestCarrinhos:
         resposta = requests.get(f"{base_url}/carrinhos/{carrinho_id}")
 
         assert resposta.status_code == 200
-        assert resposta.json()["_id"] == carrinho_id
+        validate(instance=resposta.json(), schema=SCHEMA_CARRINHO)
 
 
     def test_buscar_carrinho_id_inexistente(self, base_url):

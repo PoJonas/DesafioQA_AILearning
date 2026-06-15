@@ -1,5 +1,7 @@
 import requests, pytest
-from utils.data_generator import gerar_produto, gerar_usuario
+from utils.data_generator import gerar_produto
+from jsonschema import validate
+from utils.schemas import SCHEMA_LISTAR_PRODUTOS, SCHEMA_PRODUTO
 
 # Para verificar a documentação especifica de cada caso de teste, procure pelo arquivo abaixo
 # Documentação em: Detalhamento/Testes_Produtos.md
@@ -8,11 +10,11 @@ from utils.data_generator import gerar_produto, gerar_usuario
 @pytest.mark.produtos
 class TestProdutos:
     def test_listar_produtos(self, base_url):
-        
+
         resposta = requests.get(f"{base_url}/produtos")
 
         assert resposta.status_code == 200
-        assert "produtos" in resposta.json()
+        validate(instance=resposta.json(), schema=SCHEMA_LISTAR_PRODUTOS)
 
 
     def test_cadastrar_produto_valido(self, base_url, token):
@@ -78,7 +80,7 @@ class TestProdutos:
         resposta = requests.get(f"{base_url}/produtos/{produto_id}")
 
         assert resposta.status_code == 200
-        assert resposta.json()["_id"] == produto_id
+        validate(instance=resposta.json(), schema=SCHEMA_PRODUTO)
 
 
     def test_buscar_produto_inexistente(self, base_url):
