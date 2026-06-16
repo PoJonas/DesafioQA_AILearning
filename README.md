@@ -211,3 +211,8 @@ Os bugs encontrados durante a execução foram reportados como issues no reposit
 
 
 > Para detalhes completos de cada bug (passos para reproduzir, resultado esperado, resultado obtido e evidências), consulte a aba **Issues** do repositório.
+
+
+## Agradecimentos
+
+E por último mas não menos importante, quero agradecer a todos que me ajudaram a chegar até o fim desse bootcamp: A minha amiga Andressa que me incentivou a se inscrever mesmo eu achando que não seria selecionado, aos meus colegas de squad que me ajudaram a sanar minhas dúvidas e deixar o ambiente mais leve e divertido (Espero encontrar vocês em uma possível fase 2), e é claro a minha namorada Vitória que sempre me apoia em tudo que eu invento de fazer 💜.

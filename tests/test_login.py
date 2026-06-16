@@ -13,7 +13,6 @@ class TestLogin:
             "email": usuario_cadastrado["email"],
             "password": usuario_cadastrado["password"]
         })
-        body = resposta.json()
 
         assert resposta.status_code == 200
         validate(instance=resposta.json(), schema=SCHEMA_LOGIN)

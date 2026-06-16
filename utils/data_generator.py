@@ -12,11 +12,11 @@ def gerar_usuario(administrador: bool = True):
         "administrador": str(administrador).lower()
     }
 
-# Retorna um Dict com os dados de um produto simulado
+# Retorna um Dict com os dados de um produto simulado seguindo o padrão de schema da ServerRest
 def gerar_produto():
     return {
-        "nome": fake.unique.bothify(text="Produto ???-###"), # Gera valores seguindo o padrão 'Produto abc-123'
+        "nome": fake.unique.bothify(text="Produto ???-###"), # Gera valores seguindo o padrão 'Produto ABC-123'
         "preco": random.randint(1, 1000),
         "descricao": fake.sentence(nb_words=6), # Gera uma frase com 6 palavras
-        "quantidade": random.randint(1, 100)
+        "quantidade": random.randint(0, 100)
     }
